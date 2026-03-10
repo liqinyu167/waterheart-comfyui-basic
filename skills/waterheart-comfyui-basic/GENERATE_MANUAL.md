@@ -27,12 +27,12 @@ skills/waterheart-comfyui-basic/
 
 新增一个 workflow 时，固定按下面 6 步走：
 
-1. 先把原始 workflow JSON 放进 `workflows/<name>/`
-2. 从原始 workflow 分析节点关系
-3. 和用户确认哪些参数做成可变参数，哪些保持固定
-4. 确认 prompt / seed / 输入图 / 输出图节点
-5. 写 `<name>_generate.py`
-6. 写 `workflow.md`
+1. 先让用户提供 ComfyUI workflow 源目录
+2. 再让用户指定这次要适配哪个 workflow
+3. 把原始 workflow JSON 复制到 `workflows/<name>/`
+4. 从原始 workflow 分析节点关系
+5. 和用户确认哪些参数做成可变参数，哪些保持固定
+6. 写 `<name>_generate.py` 和 `workflow.md`
 
 不要一上来就直接写生成器。先把节点关系盘清楚。
 
@@ -42,6 +42,12 @@ skills/waterheart-comfyui-basic/
 - `workflow.md`
 
 原则是：先和用户确认“哪些参数可变、哪些固定”，再写代码。
+
+workflow 来源原则：
+
+- 先找用户自己 ComfyUI 目录里的 workflow
+- 不要默认扫描无关目录
+- 不要先从仓库假设 workflow 存在
 
 ## 先跟用户确认什么
 

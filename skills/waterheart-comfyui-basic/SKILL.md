@@ -1,11 +1,17 @@
 ---
 name: waterheart-comfyui-basic
-description: Use this skill for Waterheart local ComfyUI work on the current machine. Each workflow lives under workflows/<name>/ with its own generate script, json, and md.
+description: Use this skill for Waterheart local ComfyUI work on the current machine. Learn local paths first, then adapt or run the workflow the user specifies.
 ---
 
 # Waterheart ComfyUI Basic
 
 This is Waterheart's only local ComfyUI skill.
+
+## Read First
+
+If local paths are not confirmed yet, read:
+
+- `START.md`
 
 ## Execute Only
 
@@ -16,16 +22,34 @@ python3 skills/waterheart-comfyui-basic/scripts/comfy_manager.py ensure-ready
 python3 skills/waterheart-comfyui-basic/scripts/comfy_manager.py status
 ```
 
-### 2. Generate
+### 2. Pick workflow first
 
-Current default workflow:
+Before generating, first determine:
+
+- which workflow the user wants
+- whether that workflow already has its own `_generate.py`
+
+If the workflow is new, create:
+
+```text
+workflows/<workflow-name>/
+  <workflow-name>.json
+  <workflow-name>_generate.py
+  workflow.md
+```
+
+Then test it with `--dry-run` before real generation.
+
+### 3. Generate
+
+Current example workflow:
 
 ```bash
 python3 skills/waterheart-comfyui-basic/workflows/HadrianXL3.0/HadrianXL3.0_generate.py --prompt "a cute anime cat"
 python3 skills/waterheart-comfyui-basic/workflows/HadrianXL3.0/HadrianXL3.0_generate.py --prompt "a cute anime cat" --seed 123456789
 ```
 
-### 3. Prepare Feishu attachment delivery
+### 4. Prepare Feishu attachment delivery
 
 ```bash
 python3 skills/waterheart-comfyui-basic/scripts/comfy_deliver.py --file /home/qinyu/.openclaw/workspace-shuixin/outputs/ComfyUI_temp_xxx.png --summary "a cute anime cat"
@@ -50,7 +74,7 @@ workflows/<workflow-name>/
   workflow.md
 ```
 
-Current directories:
+Current example directories:
 
 - `workflows/HadrianXL3.0/`
 - `workflows/image_z_image_turbo/`
@@ -58,9 +82,8 @@ Current directories:
 
 ## Current Boundaries
 
-- visible prompt only for Hadrian
-- optional seed only for Hadrian
-- single image per run
+- Hadrian is the current complete example
+- other workflows may need OpenClaw to write their own `_generate.py`
 - default Feishu target: `ou_b995b8c07067086cfe0fb816ad4aeef3`
 - scheduled task: `ComfyUI-AKI`
 

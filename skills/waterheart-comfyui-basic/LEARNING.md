@@ -1,6 +1,6 @@
 # Waterheart ComfyUI Basic - Learning Notes
 
-这份文档只解释新的目录法。
+这份文档只解释新的目录法和适配顺序。
 
 ## 1. 统一目录结构
 
@@ -57,12 +57,15 @@ workflows/HadrianXL3.0/
 
 步骤固定：
 
-1. 新建目录 `workflows/<workflow-name>/`
-2. 放入 `<workflow-name>.json`
-3. 新建 `<workflow-name>_generate.py`
-4. 新建 `workflow.md`
-5. 跑 `--dry-run`
-6. 跑一次真实安全 prompt
+1. 先让用户提供 ComfyUI 本地路径
+2. 再让用户指定要用哪个 workflow
+3. 去用户自己的 ComfyUI workflow 目录找到源 `.json`
+4. 新建目录 `workflows/<workflow-name>/`
+5. 放入 `<workflow-name>.json`
+6. 新建 `<workflow-name>_generate.py`
+7. 新建 `workflow.md`
+8. 跑 `--dry-run`
+9. 跑一次真实安全 prompt
 
 ## 6. Hadrian 当前支持什么
 
@@ -72,7 +75,7 @@ workflows/HadrianXL3.0/
 - `--seed`
 - `--dry-run`
 
-当前真正可用入口是：
+当前真正可用入口是示例：
 
 ```bash
 python3 skills/waterheart-comfyui-basic/workflows/HadrianXL3.0/HadrianXL3.0_generate.py --prompt "a cute anime cat"
@@ -84,6 +87,22 @@ python3 skills/waterheart-comfyui-basic/workflows/HadrianXL3.0/HadrianXL3.0_gene
 - `qwen_image_edit_2511`：只有骨架，未实现
 
 这样做的目的不是拖慢，而是避免把不同类型的 workflow 混进一份脚本。
+
+## 9. 新 workflow 的来源
+
+新 workflow 不默认来自这个仓库。
+
+正常来源是：
+
+- 用户自己 ComfyUI 目录里的 workflow
+- 用户明确指定要适配的 workflow
+
+OpenClaw 要做的是：
+
+- 找到用户指定的 workflow
+- 复制进 skill 目录
+- 写出专属 `_generate.py`
+- 做最小测试
 
 ## 8. 通用配置只保留公共项
 
