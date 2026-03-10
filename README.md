@@ -23,7 +23,7 @@ WSL skill -> Windows ComfyUI API -> Windows GPU 推理
 
 - 启动和检查本机 ComfyUI
 - 通过 WSL 调用 Windows 侧 ComfyUI API
-- 为指定 workflow 编写专属 `_generate.py`
+- 为指定 workflow（API格式workflow） 编写专属 `_generate.py`
 - 测试生成
 - 生成后准备飞书附件交付
 
