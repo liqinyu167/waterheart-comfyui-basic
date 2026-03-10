@@ -1,0 +1,24 @@
+{
+  "comfy": {
+    "port": 8188,
+    "health_endpoint": "/system_stats",
+    "prompt_endpoint": "/prompt",
+    "history_endpoint": "/history/{prompt_id}",
+    "view_endpoint": "/view",
+    "task_name": "ComfyUI-AKI",
+    "startup_timeout_seconds": 90,
+    "startup_poll_seconds": 2,
+    "generation_timeout_seconds": 180,
+    "generation_poll_seconds": 2
+  },
+  "paths": {
+    "windows_root": "F:\\AI_Stable_Diffusion",
+    "workspace_root": "/home/qinyu/.openclaw/workspace-shuixin",
+    "workspace_output_dir": "/home/qinyu/.openclaw/workspace-shuixin/outputs",
+    "workflow_root_dir": "/home/qinyu/.openclaw/workspace-shuixin/skills/waterheart-comfyui-basic/workflows",
+    "media_inbound_dir": "/home/qinyu/.openclaw/media/inbound"
+  },
+  "defaults": {
+    "feishu_target": "ou_b995b8c07067086cfe0fb816ad4aeef3"
+  }
+}

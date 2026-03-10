@@ -1,0 +1,3 @@
+display_name: Waterheart ComfyUI Basic
+short_description: Start ComfyUI, check status, and run the basic HadrianXL3.0 workflow with a visible prompt only.
+default_prompt: Start or use local ComfyUI with the current basic Waterheart workflow.

@@ -1,0 +1,305 @@
+{
+  "6": {
+    "inputs": {
+      "text": [
+        "46",
+        0
+      ],
+      "speak_and_recognation": {
+        "__value__": [
+          false,
+          true
+        ]
+      },
+      "clip": [
+        "58",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Positive Prompt)"
+    }
+  },
+  "8": {
+    "inputs": {
+      "samples": [
+        "31",
+        0
+      ],
+      "vae": [
+        "67",
+        2
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE解码"
+    }
+  },
+  "27": {
+    "inputs": {
+      "width": 832,
+      "height": 1216,
+      "batch_size": 1
+    },
+    "class_type": "EmptySD3LatentImage",
+    "_meta": {
+      "title": "空Latent图像（SD3）"
+    }
+  },
+  "31": {
+    "inputs": {
+      "seed": 784410297469360,
+      "steps": 28,
+      "cfg": 3.5,
+      "sampler_name": "dpmpp_2s_ancestral",
+      "scheduler": "simple",
+      "denoise": 1,
+      "model": [
+        "58",
+        0
+      ],
+      "positive": [
+        "6",
+        0
+      ],
+      "negative": [
+        "33",
+        0
+      ],
+      "latent_image": [
+        "27",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "K采样器"
+    }
+  },
+  "33": {
+    "inputs": {
+      "text": " score_4,score_5,score_6,,",
+      "speak_and_recognation": {
+        "__value__": [
+          false,
+          true
+        ]
+      },
+      "clip": [
+        "58",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Negative Prompt)"
+    }
+  },
+  "35": {
+    "inputs": {
+      "guidance": 3.5,
+      "conditioning": [
+        "6",
+        0
+      ]
+    },
+    "class_type": "FluxGuidance",
+    "_meta": {
+      "title": "Flux引导"
+    }
+  },
+  "46": {
+    "inputs": {
+      "delimiter": ",",
+      "string1": [
+        "59",
+        0
+      ],
+      "string2": [
+        "51",
+        0
+      ]
+    },
+    "class_type": "JoinStrings",
+    "_meta": {
+      "title": "Join Strings"
+    }
+  },
+  "50": {
+    "inputs": {
+      "images": [
+        "8",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "预览图像"
+    }
+  },
+  "51": {
+    "inputs": {
+      "string": "score_9, score_8_up, score_7_up, source_anime, masterpiece, best quality, newest, absurdres, highres, ultra-detailed, professional lighting, vibrant colors",
+      "strip_newlines": true,
+      "speak_and_recognation": {
+        "__value__": [
+          false,
+          true
+        ]
+      }
+    },
+    "class_type": "StringConstantMultiline",
+    "_meta": {
+      "title": "正面提示词：英文 - 仅质量标签"
+    }
+  },
+  "58": {
+    "inputs": {
+      "text": "<lora:あきぺこ:0.75> <lora:ponyv6_noobE11_2_adamW-000017:0.75> <lora:detailed hand focus style illustriousXL v1.1:0.75> <lora:Clos_Pers_IL:1.00>",
+      "loras": {
+        "__value__": [
+          {
+            "name": "あきぺこ",
+            "strength": "0.75",
+            "active": true,
+            "expanded": false,
+            "clipStrength": "0.75"
+          },
+          {
+            "name": "ponyv6_noobE11_2_adamW-000017",
+            "strength": "0.75",
+            "active": true,
+            "expanded": false,
+            "clipStrength": "0.75"
+          },
+          {
+            "name": "detailed hand focus style illustriousXL v1.1",
+            "strength": "0.75",
+            "active": true,
+            "expanded": false,
+            "clipStrength": "0.75"
+          },
+          {
+            "name": "Clos_Pers_IL",
+            "strength": 1,
+            "active": true,
+            "expanded": false,
+            "clipStrength": 1
+          }
+        ]
+      },
+      "speak_and_recognation": {
+        "__value__": [
+          false,
+          true
+        ]
+      },
+      "model": [
+        "67",
+        0
+      ],
+      "clip": [
+        "72",
+        0
+      ]
+    },
+    "class_type": "Lora Loader (LoraManager)",
+    "_meta": {
+      "title": "Lora Loader (LoraManager)"
+    }
+  },
+  "59": {
+    "inputs": {
+      "group_mode": true,
+      "default_active": true,
+      "toggle_trigger_words": {
+        "__value__": [
+          {
+            "text": "",
+            "active": false
+          }
+        ]
+      },
+      "orinalMessage": "",
+      "trigger_words": [
+        "58",
+        2
+      ]
+    },
+    "class_type": "TriggerWord Toggle (LoraManager)",
+    "_meta": {
+      "title": "TriggerWord Toggle (LoraManager)"
+    }
+  },
+  "67": {
+    "inputs": {
+      "ckpt_name": "SDXL\\Pony\\Hadrian DeliceXL3.0.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Checkpoint加载器（简易）"
+    }
+  },
+  "68": {
+    "inputs": {
+      "filename_prefix": "Openclaw",
+      "file_format": "png",
+      "lossless_webp": false,
+      "quality": 100,
+      "embed_workflow": false,
+      "add_counter_to_filename": true,
+      "images": [
+        "8",
+        0
+      ]
+    },
+    "class_type": "Save Image (LoraManager)",
+    "_meta": {
+      "title": "Save Image - Openclaw Output"
+    }
+  },
+  "72": {
+    "inputs": {
+      "stop_at_clip_layer": -2,
+      "clip": [
+        "67",
+        1
+      ]
+    },
+    "class_type": "CLIPSetLastLayer",
+    "_meta": {
+      "title": "设置CLIP最后一层"
+    }
+  },
+  "75": {
+    "inputs": {
+      "PreviewTextNode_0": "",
+      "text": [
+        "46",
+        0
+      ]
+    },
+    "class_type": "PreviewTextNode",
+    "_meta": {
+      "title": "Preview Text Node"
+    }
+  },
+  "78": {
+    "inputs": {
+      "string": "",
+      "strip_newlines": true,
+      "speak_and_recognation": {
+        "__value__": [
+          false,
+          true
+        ]
+      }
+    },
+    "class_type": "StringConstantMultiline",
+    "_meta": {
+      "title": "String Constant Multiline"
+    }
+  }
+}
